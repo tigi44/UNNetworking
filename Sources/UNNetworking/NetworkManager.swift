@@ -31,15 +31,17 @@ public enum NetworkError: LocalizedError {
     public var failureReason: String {
         switch self {
         case .NetworkError_CLIENT_NOT_CONNECTED_TO_INTERNET(_):
-            return "네트워크에 연결할 수 없습니다."
-        case .NetworkError_CLIENT(_), .NetworkError_SERVER(_):
-            return "데이터를 불러오지 못했습니다."
+            return "CLIENT_NOT_CONNECTED_TO_INTERNET"
+        case .NetworkError_CLIENT(_):
+            return "CLIENT_ERROR"
+        case .NetworkError_SERVER(_):
+            return "SERVER_ERROR"
         case .NetworkError_SERVER_500(_):
-            return "알수 없는 오류가 발생했습니다."
+            return "SERVER_ERROR_500"
         case .NetworkError_SERVICE(_):
-            return "오류가 발생했습니다."
+            return "SERVICE_ERROR"
         case .NetworkError_SERVICE_SERVER_MESSAGE(_):
-            return ""
+            return "SERVER_ERROR_MESSAGE"
         }
     }
 }
