@@ -7,8 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0EBAF9A62485F54E00FF14DD /* DecodeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBAF9A32485F54E00FF14DD /* DecodeUtils.swift */; };
+		0EBAF9A72485F54E00FF14DD /* CodableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBAF9A52485F54E00FF14DD /* CodableExtension.swift */; };
+		0EBAF9AB2485F56100FF14DD /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBAF9A82485F56100FF14DD /* NetworkResponse.swift */; };
+		0EBAF9AC2485F56100FF14DD /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBAF9A92485F56100FF14DD /* NetworkRequest.swift */; };
+		0EBAF9AD2485F56100FF14DD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBAF9AA2485F56100FF14DD /* NetworkManager.swift */; };
+		0EBAF9B12485F57C00FF14DD /* UNNetworkingRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBAF9AE2485F57C00FF14DD /* UNNetworkingRequestTests.swift */; };
+		0EBAF9B22485F57C00FF14DD /* UNNetworkingResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBAF9AF2485F57C00FF14DD /* UNNetworkingResponseTests.swift */; };
+		0EBAF9B32485F57C00FF14DD /* UNNetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBAF9B02485F57C00FF14DD /* UNNetworkingTests.swift */; };
 		0EFE6CB42480980800B70C36 /* UNNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFE6CAA2480980800B70C36 /* UNNetworking.framework */; };
-		0EFE6CB92480980800B70C36 /* UNNetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE6CB82480980800B70C36 /* UNNetworkingTests.swift */; };
 		0EFE6CBB2480980800B70C36 /* UNNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 0EFE6CAD2480980800B70C36 /* UNNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -23,11 +30,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0EBAF9A32485F54E00FF14DD /* DecodeUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodeUtils.swift; sourceTree = "<group>"; };
+		0EBAF9A52485F54E00FF14DD /* CodableExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableExtension.swift; sourceTree = "<group>"; };
+		0EBAF9A82485F56100FF14DD /* NetworkResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
+		0EBAF9A92485F56100FF14DD /* NetworkRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		0EBAF9AA2485F56100FF14DD /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		0EBAF9AE2485F57C00FF14DD /* UNNetworkingRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UNNetworkingRequestTests.swift; sourceTree = "<group>"; };
+		0EBAF9AF2485F57C00FF14DD /* UNNetworkingResponseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UNNetworkingResponseTests.swift; sourceTree = "<group>"; };
+		0EBAF9B02485F57C00FF14DD /* UNNetworkingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UNNetworkingTests.swift; path = "../../unse-iOS/UNNetworkingTests/UNNetworkingTests.swift"; sourceTree = "<group>"; };
 		0EFE6CAA2480980800B70C36 /* UNNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UNNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EFE6CAD2480980800B70C36 /* UNNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNNetworking.h; sourceTree = "<group>"; };
 		0EFE6CAE2480980800B70C36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0EFE6CB32480980800B70C36 /* UNNetworkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UNNetworkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0EFE6CB82480980800B70C36 /* UNNetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNNetworkingTests.swift; sourceTree = "<group>"; };
 		0EFE6CBA2480980800B70C36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -50,6 +64,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0EBAF9A22485F54E00FF14DD /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0EBAF9A32485F54E00FF14DD /* DecodeUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		0EBAF9A42485F54E00FF14DD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0EBAF9A52485F54E00FF14DD /* CodableExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		0EFE6CA02480980800B70C36 = {
 			isa = PBXGroup;
 			children = (
@@ -71,7 +101,12 @@
 		0EFE6CAC2480980800B70C36 /* UNNetworking */ = {
 			isa = PBXGroup;
 			children = (
+				0EBAF9A42485F54E00FF14DD /* Extensions */,
+				0EBAF9A22485F54E00FF14DD /* Utils */,
 				0EFE6CAD2480980800B70C36 /* UNNetworking.h */,
+				0EBAF9AA2485F56100FF14DD /* NetworkManager.swift */,
+				0EBAF9A92485F56100FF14DD /* NetworkRequest.swift */,
+				0EBAF9A82485F56100FF14DD /* NetworkResponse.swift */,
 				0EFE6CAE2480980800B70C36 /* Info.plist */,
 			);
 			path = UNNetworking;
@@ -80,7 +115,9 @@
 		0EFE6CB72480980800B70C36 /* UNNetworkingTests */ = {
 			isa = PBXGroup;
 			children = (
-				0EFE6CB82480980800B70C36 /* UNNetworkingTests.swift */,
+				0EBAF9AE2485F57C00FF14DD /* UNNetworkingRequestTests.swift */,
+				0EBAF9AF2485F57C00FF14DD /* UNNetworkingResponseTests.swift */,
+				0EBAF9B02485F57C00FF14DD /* UNNetworkingTests.swift */,
 				0EFE6CBA2480980800B70C36 /* Info.plist */,
 			);
 			path = UNNetworkingTests;
@@ -195,6 +232,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EBAF9A72485F54E00FF14DD /* CodableExtension.swift in Sources */,
+				0EBAF9A62485F54E00FF14DD /* DecodeUtils.swift in Sources */,
+				0EBAF9AD2485F56100FF14DD /* NetworkManager.swift in Sources */,
+				0EBAF9AC2485F56100FF14DD /* NetworkRequest.swift in Sources */,
+				0EBAF9AB2485F56100FF14DD /* NetworkResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,7 +244,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0EFE6CB92480980800B70C36 /* UNNetworkingTests.swift in Sources */,
+				0EBAF9B32485F57C00FF14DD /* UNNetworkingTests.swift in Sources */,
+				0EBAF9B12485F57C00FF14DD /* UNNetworkingRequestTests.swift in Sources */,
+				0EBAF9B22485F57C00FF14DD /* UNNetworkingResponseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,14 +391,17 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = UNNetworking/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tigi44.UNNetworking;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -370,14 +417,17 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = UNNetworking/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tigi44.UNNetworking;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -386,6 +436,7 @@
 		0EFE6CC22480980800B70C36 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = UNNetworkingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -403,6 +454,7 @@
 		0EFE6CC32480980800B70C36 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = UNNetworkingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
