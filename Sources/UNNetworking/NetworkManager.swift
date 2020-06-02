@@ -50,11 +50,18 @@ public enum NetworkError: LocalizedError {
 //MARK: Class - NetworkManager
 
 
-protocol SendToNetwork {
+public protocol NetworkManagerRequest {
     func sendRequest(_ networkRequest: NetworkRequest, success: ((Any?) -> Void)?, fail: ((Error) -> Void)?)
 }
 
-open class NetworkManager: SendToNetwork {
+internal protocol NetworkManagerHandleError {
+    func handleErrorHTTPURLResponse(_ response: URLResponse?, networkRequest: NetworkRequest, data: Data?, fail: ((Error) ->Void)?)
+    func handleClientError(_ error: Error, networkRequest: NetworkRequest, response: URLResponse?, data: Data?, fail: ((Error) ->Void)?)
+    func handleServiceError(_ error: Error, networkRequest: NetworkRequest, response: URLResponse?, data: Data?, fail: ((Error) ->Void)?)
+    func handleNetworkError(_ error: NetworkError, networkRequest: NetworkRequest, response: URLResponse?, data: Data?, fail: ((Error) ->Void)?)
+}
+
+open class NetworkManager: NetworkManagerRequest, NetworkManagerHandleError {
     
     public static let shared = NetworkManager()
     private init() {}

@@ -11,20 +11,23 @@ import Foundation
 
 //MARK: -  NetworkResponse
 
-public protocol NetworkURLResponse {
+internal protocol NetworkURLResponse {
     var urlResponse: URLResponse? { get set }
 }
 
 public protocol NetworkResponseDataParser {
     var responseDataType: AnyClass? { get set }
     func parseResponseData(_ data: Data?, success: ((Any?) -> Void)?) throws
-    func handleResponseObject(_ responseObject: Any?, success: ((Any?) -> Void)?) throws
+    func parseJsonResponseData(_ data: Data?, success: ((Any?) -> Void)?) throws
+    func parseObjectResponseData(_ data: Data?, success: ((Any?) -> Void)?) throws
+    func parseStringResponseData(_ data: Data?, success: ((Any?) -> Void)?) throws
+    func decodeResponseObject(_ responseObject: Any?, success: ((Any?) -> Void)?) throws
 }
 
 open class NetworkResponse: NetworkURLResponse, NetworkResponseDataParser {
     
     public var responseDataType: AnyClass?
-    public var urlResponse: URLResponse?
+    internal var urlResponse: URLResponse?
     
     public init() {}
     
@@ -45,7 +48,7 @@ open class NetworkResponse: NetworkURLResponse, NetworkResponseDataParser {
         }
     }
     
-    open func handleResponseObject(_ responseObject: Any?, success: ((Any?) -> Void)?) throws {
+    open func decodeResponseObject(_ responseObject: Any?, success: ((Any?) -> Void)?) throws {
         
         if let success = success {
             
@@ -82,7 +85,7 @@ extension NetworkResponse {
             
             if let reponseJsonObject = jsonResponseSerializer(data) {
                 
-                try handleResponseObject(reponseJsonObject, success: success)
+                try decodeResponseObject(reponseJsonObject, success: success)
             } else {
                 
                 throw NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : "Error : the Response has No JsonObject"])
@@ -99,7 +102,7 @@ extension NetworkResponse {
             
             if let reponseJsonObject = jsonResponseSerializer(data) {
                 
-                try handleResponseObject(reponseJsonObject, success: success)
+                try decodeResponseObject(reponseJsonObject, success: success)
             } else {
                 
                 try parseStringResponseData(data, success: success)
@@ -115,7 +118,7 @@ extension NetworkResponse {
         if let data = data {
             
             let responseStringObject = String(data: data, encoding: .utf8)
-            try handleResponseObject(responseStringObject, success: success)
+            try decodeResponseObject(responseStringObject, success: success)
         } else {
             
             throw NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : "Error : the Response has No Data"])
@@ -150,4 +153,5 @@ internal extension NetworkResponse {
         return result
     }
 }
+
 

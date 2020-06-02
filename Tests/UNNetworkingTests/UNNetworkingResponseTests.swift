@@ -63,7 +63,7 @@ class UNNetworkingResponseTests: XCTestCase {
     func testHandleResponseObject() throws {
         
         networkResponse.responseDataType = ResponseData.self
-        try networkResponse.handleResponseObject(responseDataJson, success: testResponseDataSuccess)
+        try networkResponse.decodeResponseObject(responseDataJson, success: testResponseDataSuccess)
     }
     
     func testParseJsonResponseData() throws {

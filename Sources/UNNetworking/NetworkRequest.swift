@@ -9,7 +9,7 @@
 import Foundation
 
 
-//MARK : Enum
+//MARK: - Enum
 
 
 public enum HttpMethod: String {
@@ -22,7 +22,11 @@ public enum ContentType: String {
     case APPLICATION_OCTETSTREAM = "application/octet-stream"
 }
 
-protocol NetworkURLRequest {
+
+//MARK: - NetworkRequest
+
+
+public protocol NetworkURLRequest {
     
     var urlPath: String { get }
     var method: HttpMethod { get }
@@ -41,10 +45,6 @@ protocol NetworkURLRequest {
     
     func request() -> URLRequest?
 }
-
-
-//MARK: - NetworkRequest
-
 
 open class NetworkRequest: NetworkURLRequest {
 
