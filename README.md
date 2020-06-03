@@ -1,6 +1,6 @@
 # UNNetworking
 
-![image](./uml.png)
+![image](./uml2.png)
 
 ## NetworkManager
 ```swift
@@ -18,7 +18,7 @@ internal protocol NetworkManagerError {
 
 ## NetworkRequest
 ```swift
-protocol NetworkURLRequest {
+public protocol NetworkURLRequest {
 
     var urlPath: String { get }
     var method: HttpMethod { get }
@@ -26,15 +26,15 @@ protocol NetworkURLRequest {
     var headers: Dictionary<String, String>? { get }
     var params: Dictionary<String, Any>? { get }
     var bodyBinary: Data? { get set }
-
+    var cachePolicy: URLRequest.CachePolicy { get set }
+    var timeoutInterval: TimeInterval { get set }
+    
     init(urlPath: String, method: HttpMethod, contentType: ContentType)
-
+    
     func alphaHost() -> String
     func betaHost() -> String
     func realHost() -> String
-    func cachePolicy() -> URLRequest.CachePolicy
-    func timeoutInterval() -> TimeInterval
-
+    
     func request() -> URLRequest?
 }
 

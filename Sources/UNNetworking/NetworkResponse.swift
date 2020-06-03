@@ -117,7 +117,10 @@ extension NetworkResponse {
         
         if let data = data {
             
-            let responseStringObject = String(data: data, encoding: .utf8)
+            var responseStringObject = String(data: data, encoding: .utf8)
+            if let responseString = responseStringObject {
+                responseStringObject = stringResponseSerializer(responseString)
+            }
             try decodeResponseObject(responseStringObject, success: success)
         } else {
             
@@ -134,15 +137,8 @@ internal extension NetworkResponse {
         do {
             if let dataString = String(data: data, encoding: .utf8) {
                 
-                var stringData: Data?
-                var string = dataString
-                string = string.trimmingCharacters(in: .whitespacesAndNewlines)
-                string = string.trimmingCharacters(in: .illegalCharacters)
-                string = string.replacingOccurrences(of: "\n", with: "\\n")
-                string = string.replacingOccurrences(of: "\r", with: "\\r")
-                string = string.replacingOccurrences(of: "\t", with: "\\t")
-                
-                stringData = string.data(using: .utf8)
+                let string      = stringResponseSerializer(dataString)
+                let stringData  = string.data(using: .utf8)
                 result = try JSONSerialization.jsonObject(with: stringData!, options: [])
             }
         } catch {
@@ -151,6 +147,18 @@ internal extension NetworkResponse {
         }
         
         return result
+    }
+    
+    private final func stringResponseSerializer(_ dataString: String) -> String {
+        var string = dataString
+        
+        string = string.trimmingCharacters(in: .whitespacesAndNewlines)
+        string = string.trimmingCharacters(in: .illegalCharacters)
+        string = string.replacingOccurrences(of: "\n", with: "\\n")
+        string = string.replacingOccurrences(of: "\r", with: "\\r")
+        string = string.replacingOccurrences(of: "\t", with: "\\t")
+        
+        return string
     }
 }
 

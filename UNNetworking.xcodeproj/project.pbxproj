@@ -21,6 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		0EBAFA4A2487217100FF14DD /* UNNetworkingUtilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBAFA492487217100FF14DD /* UNNetworkingUtilTests.swift */; };
+		0EBAFA4C2487219600FF14DD /* UNNetworkingManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBAFA4B2487219600FF14DD /* UNNetworkingManagerTests.swift */; };
 		OBJ_33 /* CodableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* CodableExtension.swift */; };
 		OBJ_34 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* NetworkManager.swift */; };
 		OBJ_35 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* NetworkRequest.swift */; };
@@ -51,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0EBAFA492487217100FF14DD /* UNNetworkingUtilTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNNetworkingUtilTests.swift; sourceTree = "<group>"; };
+		0EBAFA4B2487219600FF14DD /* UNNetworkingManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNNetworkingManagerTests.swift; sourceTree = "<group>"; };
 		OBJ_10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		OBJ_12 /* CodableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableExtension.swift; sourceTree = "<group>"; };
 		OBJ_13 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -115,8 +119,10 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_20 /* Info.plist */,
+				0EBAFA4B2487219600FF14DD /* UNNetworkingManagerTests.swift */,
 				OBJ_21 /* UNNetworkingRequestTests.swift */,
 				OBJ_22 /* UNNetworkingResponseTests.swift */,
+				0EBAFA492487217100FF14DD /* UNNetworkingUtilTests.swift */,
 				OBJ_23 /* UNNetworkingTests.swift */,
 			);
 			name = UNNetworkingTests;
@@ -132,7 +138,7 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -141,7 +147,6 @@
 				OBJ_24 /* Products */,
 				OBJ_27 /* README.md */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Sources */ = {
@@ -233,7 +238,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_24 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -271,8 +276,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				0EBAFA4C2487219600FF14DD /* UNNetworkingManagerTests.swift in Sources */,
 				OBJ_55 /* UNNetworkingRequestTests.swift in Sources */,
 				OBJ_56 /* UNNetworkingResponseTests.swift in Sources */,
+				0EBAFA4A2487217100FF14DD /* UNNetworkingUtilTests.swift in Sources */,
 				OBJ_57 /* UNNetworkingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

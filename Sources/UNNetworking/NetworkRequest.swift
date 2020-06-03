@@ -34,14 +34,14 @@ public protocol NetworkURLRequest {
     var headers: Dictionary<String, String>? { get }
     var params: Dictionary<String, Any>? { get }
     var bodyBinary: Data? { get set }
+    var cachePolicy: URLRequest.CachePolicy { get set }
+    var timeoutInterval: TimeInterval { get set }
     
     init(urlPath: String, method: HttpMethod, contentType: ContentType)
     
     func alphaHost() -> String
     func betaHost() -> String
     func realHost() -> String
-    func cachePolicy() -> URLRequest.CachePolicy
-    func timeoutInterval() -> TimeInterval
     
     func request() -> URLRequest?
 }
@@ -57,7 +57,10 @@ open class NetworkRequest: NetworkURLRequest {
     public var contentType: ContentType
     public var headers: Dictionary<String, String>?
     public var params: Dictionary<String, Any>?
+    
     public var bodyBinary: Data?
+    public var timeoutInterval: TimeInterval = 5.0
+    public var cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy
     
     
     //MARK: - response variable
@@ -71,9 +74,9 @@ open class NetworkRequest: NetworkURLRequest {
     
     public required init(urlPath: String, method: HttpMethod, contentType: ContentType) {
         
-        self.urlPath = urlPath
-        self.method = method
-        self.contentType = contentType
+        self.urlPath        = urlPath
+        self.method         = method
+        self.contentType    = contentType
     }
     
     public convenience init(urlPath: String, method: HttpMethod, contentType: ContentType, params: Dictionary<String, Any>?) {
@@ -111,12 +114,6 @@ open class NetworkRequest: NetworkURLRequest {
     }
     open func realHost() -> String {
         return ""
-    }
-    open func cachePolicy() -> URLRequest.CachePolicy {
-        return .useProtocolCachePolicy
-    }
-    open func timeoutInterval() -> TimeInterval {
-        return 5.0
     }
 }
 
@@ -253,9 +250,9 @@ internal extension NetworkRequest {
             request = self.makeRequestBody()
         }
         
-        request?.httpMethod = self.method.rawValue
-        request?.cachePolicy = self.cachePolicy()
-        request?.timeoutInterval = self.timeoutInterval()
+        request?.httpMethod         = self.method.rawValue
+        request?.cachePolicy        = self.cachePolicy
+        request?.timeoutInterval    = self.timeoutInterval
         
         if (contentType != .NONE) {
             request?.setValue(contentType.rawValue, forHTTPHeaderField: "Content-Type")

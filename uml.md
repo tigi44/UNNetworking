@@ -7,7 +7,7 @@ NetworkURLRequest <|.. NetworkRequest
 NetworkURLResponse <|.. NetworkResponse
 NetworkResponseDataParser <|.. NetworkResponse
 
-NetworkResponse <-* NetworkRequest
+NetworkResponse <-* NetworkRequest 
 NetworkRequest <-o NetworkManager
 
 
@@ -32,13 +32,13 @@ interface NetworkURLRequest {
 + headers
 + params
 + bodyBinary
++ cachePolicy
++ timeoutInterval
 
 + init()
 + alphaHost()
 + betaHost()
 + realHost()
-+ cachePolicy()
-+ timeoutInterval()
 + request()
 }
 
