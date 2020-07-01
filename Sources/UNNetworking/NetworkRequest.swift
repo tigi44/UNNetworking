@@ -28,6 +28,7 @@ public enum ContentType: String {
 
 public protocol NetworkURLRequest {
     
+    var host: String { get }
     var urlPath: String { get }
     var method: HttpMethod { get }
     var contentType: ContentType { get }
@@ -39,10 +40,6 @@ public protocol NetworkURLRequest {
     
     init(urlPath: String, method: HttpMethod, contentType: ContentType)
     
-    func alphaHost() -> String
-    func betaHost() -> String
-    func realHost() -> String
-    
     func request() -> URLRequest?
 }
 
@@ -51,7 +48,12 @@ open class NetworkRequest: NetworkURLRequest {
 
     //MARK: - request variable
     
-    
+    open var host: String {
+        get {
+            return ""
+        }
+    }
+
     public var urlPath: String
     public var method: HttpMethod
     public var contentType: ContentType
@@ -101,20 +103,6 @@ open class NetworkRequest: NetworkURLRequest {
         
         return self.makeRequest()
     }
-    
-    
-    //MARK: - NetworkRequestProtocol Override
-    
-    
-    open func alphaHost() -> String {
-        return ""
-    }
-    open func betaHost() -> String {
-        return ""
-    }
-    open func realHost() -> String {
-        return ""
-    }
 }
 
 
@@ -154,17 +142,6 @@ extension NetworkRequest {
 
 internal extension NetworkRequest {
     
-    private func host() -> String {
-        
-        #if REAL
-            return self.realHost()
-        #elseif BETA
-            return self.betaHost()
-        #else
-            return self.alphaHost()
-        #endif
-    }
-    
     private func checkUrlPrefix(urlPath: String) -> String {
         
         var result: String = ""
@@ -184,7 +161,7 @@ internal extension NetworkRequest {
     
     private func url() -> String {
         urlPath = checkUrlPrefix(urlPath: self.urlPath)
-        return self.host() + urlPath
+        return self.host + urlPath
     }
     
     private func makeRequestQuery() -> URLRequest? {
