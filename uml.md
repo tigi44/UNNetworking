@@ -1,8 +1,10 @@
 ```plantuml
-NetworkManagerRequest <|.. NetworkManager
+NetworkManagerSendRequest <|.. NetworkManager
 NetworkManagerHandleError <|.. NetworkManager
 
 NetworkURLRequest <|.. NetworkRequest
+NetworkRequestResponse <|.. NetworkRequest
+MakeURLRequest <|.. NetworkRequest
 
 NetworkURLResponse <|.. NetworkResponse
 NetworkResponseDataParser <|.. NetworkResponse
@@ -12,7 +14,7 @@ NetworkRequest <-o NetworkManager
 
 
 
-interface NetworkManagerRequest {
+interface NetworkManagerSendRequest {
 + sendRequest()
 }
 
@@ -26,25 +28,28 @@ interface NetworkManagerHandleError {
 class NetworkManager {}
 
 interface NetworkURLRequest {
-+ urlPath
-+ method
-+ contentType
-+ headers
-+ params
-+ bodyBinary
-+ cachePolicy
-+ timeoutInterval
++ host: String
++ urlPath: String
++ method: HttpMethod
++ contentType: ContentType
++ headers: Dictionary
++ params: Dictionary
++ bodyBinary: Data
++ cachePolicy: URLRequest.CachePolicy
++ timeoutInterval: TimeInterval
 
-+ init()
-+ alphaHost()
-+ betaHost()
-+ realHost()
-+ request()
++ init(urlPath: String, method: HttpMethod, contentType: ContentType)
 }
 
-class NetworkRequest {
-+ networkResponse: NetworkURLResponse
+interface NetworkRequestResponse {
++ networkResponse: NetworkResponse
 }
+
+interface MakeURLRequest {
+- request() -> URLRequest
+}
+
+class NetworkRequest {}
 
 interface NetworkURLResponse {
 - urlResponse

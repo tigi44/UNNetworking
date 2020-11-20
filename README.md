@@ -1,14 +1,14 @@
 # UNNetworking
 
-![image](./uml2.png)
+![image](./UML_1_0_1.png)
 
 ## NetworkManager
 ```swift
-public protocol NetworkManagerRequest {
+public protocol NetworkManagerSendRequest {
     func sendRequest(_ networkRequest: NetworkRequest, success: ((Any?) -> Void)?, fail: ((Error) -> Void)?)
 }
 
-internal protocol NetworkManagerError {
+internal protocol NetworkManagerHandleError {
     func handleErrorHTTPURLResponse(_ response: URLResponse?, networkRequest: NetworkRequest, data: Data?, fail: ((Error) ->Void)?)
     func handleClientError(_ error: Error, networkRequest: NetworkRequest, response: URLResponse?, data: Data?, fail: ((Error) ->Void)?)
     func handleServiceError(_ error: Error, networkRequest: NetworkRequest, response: URLResponse?, data: Data?, fail: ((Error) ->Void)?)
@@ -20,6 +20,7 @@ internal protocol NetworkManagerError {
 ```swift
 public protocol NetworkURLRequest {
 
+    var host: String { get }
     var urlPath: String { get }
     var method: HttpMethod { get }
     var contentType: ContentType { get }
@@ -28,16 +29,17 @@ public protocol NetworkURLRequest {
     var bodyBinary: Data? { get set }
     var cachePolicy: URLRequest.CachePolicy { get set }
     var timeoutInterval: TimeInterval { get set }
-    
+
     init(urlPath: String, method: HttpMethod, contentType: ContentType)
-    
-    func alphaHost() -> String
-    func betaHost() -> String
-    func realHost() -> String
-    
-    func request() -> URLRequest?
 }
 
+public protocol NetworkRequestResponse {
+    var networkResponse: NetworkResponse? { get set }
+}
+
+internal protocol MakeURLRequest {
+    func request() -> URLRequest?
+}
 ```
 
 ## NetworkResponse

@@ -39,11 +39,17 @@ public protocol NetworkURLRequest {
     var timeoutInterval: TimeInterval { get set }
     
     init(urlPath: String, method: HttpMethod, contentType: ContentType)
-    
+}
+
+public protocol NetworkRequestResponse {
+    var networkResponse: NetworkResponse? { get set }
+}
+
+internal protocol MakeURLRequest {
     func request() -> URLRequest?
 }
 
-open class NetworkRequest: NetworkURLRequest {
+open class NetworkRequest: NetworkURLRequest, NetworkRequestResponse, MakeURLRequest {
 
 
     //MARK: - request variable
@@ -96,10 +102,10 @@ open class NetworkRequest: NetworkURLRequest {
     }
     
     
-    //MARK: - public
+    //MARK: - private
     
     
-    public func request() -> URLRequest? {
+    func request() -> URLRequest? {
         
         return self.makeRequest()
     }
