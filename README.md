@@ -1,4 +1,5 @@
 # UNNetworking
+![SwiftCI](https://github.com/tigi44/UNNetworking/workflows/SwiftCI/badge.svg)
 
 ![image](./UML_1_0_1.png)
 
